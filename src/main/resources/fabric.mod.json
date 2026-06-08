@@ -1,34 +1,42 @@
 {
-  "schemaVersion": 1,
-  "id": "anion",
-  "version": "${version}",
-  "name": "Anion",
-  "description": "",
-  "authors": [
-    "Chemthunder",
-    "AcoYT"
-  ],
-  "license": "ARR",
-  "icon": "assets/anion/icon.png",
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-      "com.peak.anion.core.Anion"
+    "schemaVersion": 1,
+    "id": "anion",
+    "version": "${version}",
+    "name": "Anion",
+    "description": "",
+    "authors": [
+        "Chemthunder",
+        "AcoYT"
     ],
-    "client": [
-      "com.peak.anion.core.AnionClient"
+    "license": "ARR",
+    "icon": "assets/anion/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "com.peak.anion.core.Anion"
+        ],
+        "client": [
+            "com.peak.anion.core.AnionClient"
+        ],
+        "cardinal-components": [
+            "com.peak.anion.core.cca.AnionCCA"
+        ],
+        "fabric-datagen": [
+            "com.peak.anion.datagen.AnionDatagen"
+        ]
+    },
+    "accessWidener": "anion.accesswidener",
+    "mixins": [
+        "anion.mixins.json"
     ],
-    "fabric-datagen": [
-      "com.peak.anion.datagen.AnionDataGen"
-    ]
-  },
-  "mixins": [
-    "anion.mixins.json"
-  ],
-  "depends": {
-    "fabricloader": ">=0.15.11",
-    "minecraft": "~1.21.1",
-    "java": ">=21",
-    "fabric-api": "*"
-  }
+    "depends": {
+        "fabricloader": ">=0.15.11",
+        "minecraft": "~1.21.1",
+        "java": ">=21",
+        "fabric-api": "*",
+        "acornlib": "*"
+    },
+    "custom": {
+        "cardinal-components": []
+    }
 }

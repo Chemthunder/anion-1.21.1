@@ -6,6 +6,10 @@ plugins {
 version = project.mod_version
 group = project.maven_group
 
+base {
+    archivesName = project.archives_base_name
+}
+
 repositories {
     // Modrinth
     exclusiveContent {
@@ -34,6 +38,10 @@ repositories {
 
     // MixinSquared
     maven { url "https://maven.bawnorton.com/releases" }
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/anion.accesswidener")
 }
 
 fabricApi {

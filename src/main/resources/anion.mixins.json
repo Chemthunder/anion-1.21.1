@@ -1,15 +1,12 @@
 {
-  "required": true,
-  "package": "com.peak.anion.mixin",
-  "compatibilityLevel": "JAVA_21",
-  "plugin": "com.peak.anion.core.util.AnionMixinPlugin",
-  "mixins": [
-    "LightningRodBlockMixin"
-  ],
-  "injectors": {
-    "defaultRequire": 1
-  },
-  "overwrites": {
-    "requireAnnotations": true
-  }
+    "required": true,
+    "package": "com.peak.anion.mixin",
+    "plugin": "com.peak.anion.core.util.AnionMixinPlugin",
+    "compatibilityLevel": "JAVA_21",
+    "mixins": [
+        "LightningRodBlockMixin"
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
 }

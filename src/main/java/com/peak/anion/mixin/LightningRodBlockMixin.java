@@ -6,6 +6,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LightningRodBlock;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.predicate.entity.EntityPredicates;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -22,28 +23,23 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = LightningRodBlock.class)
 public abstract class LightningRodBlockMixin {
     @Inject(method = "setPowered", at = @At(value = "TAIL"))
-    private void anion$chickenFried(BlockState state, World world, BlockPos pos, CallbackInfo ci) {
-        if (world.getBlockState(pos.down()).equals(Blocks.IRON_BLOCK.getDefaultState())) {
-            world.setBlockState(pos.down(), AnionBlocks.CHARGED_IRON_BLOCK.getDefaultState());
+    private void anion$chargeIron(BlockState state, World world, BlockPos pos, CallbackInfo ci) {
+        BlockPos blockPos = pos.down();
+        if (world.getBlockState(blockPos).isOf(Blocks.IRON_BLOCK)) {
+            world.setBlockState(blockPos, AnionBlocks.CHARGED_IRON_BLOCK.getDefaultState());
 
             world.playSound(
                     null,
-                    pos.down(),
-                    SoundEvents.ITEM_TRIDENT_THUNDER.value(),
-                    SoundCategory.BLOCKS,
-                    1F,
-                    0.2F
+                    blockPos,
+                    SoundEvents.ITEM_TRIDENT_THUNDER.value(), SoundCategory.BLOCKS,
+                    1.0F, 0.2F
             );
 
-            world.getEntitiesByClass(
-                    PlayerEntity.class,
-                    new Box(pos.down()).expand(15),
-                    entity -> true
-            ).forEach(capture -> {
-                if (capture instanceof ScreenShaker shaker) {
+            for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class, new Box(blockPos).expand(15), EntityPredicates.EXCEPT_SPECTATOR)) {
+                if (player instanceof ScreenShaker shaker) {
                     shaker.addScreenShake(1.3F, 40);
                 }
-            });
+            }
         }
     }
 }

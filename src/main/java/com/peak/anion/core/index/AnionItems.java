@@ -1,7 +1,6 @@
 package com.peak.anion.core.index;
 
 import com.peak.anion.core.Anion;
-import com.peak.anion.core.item.ChargedIronIngotItem;
 import net.acoyt.acornlib.api.registrants.ItemRegistrant;
 import net.minecraft.item.Item;
 
@@ -11,9 +10,7 @@ import net.minecraft.item.Item;
 public interface AnionItems {
     ItemRegistrant ITEMS = new ItemRegistrant(Anion.MOD_ID);
 
-    Item CHARGED_IRON = ITEMS.register("charged_iron_ingot", ChargedIronIngotItem::new, new Item.Settings()
-            .maxCount(16)
-    );
+    Item CHARGED_IRON = ITEMS.register("charged_iron_ingot", Item::new, new Item.Settings());
 
     static void init() {}
 }
