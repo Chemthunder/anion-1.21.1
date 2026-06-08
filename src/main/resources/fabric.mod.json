@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "anion",
+  "version": "${version}",
+  "name": "Anion",
+  "description": "",
+  "authors": [
+    "Chemthunder",
+    "AcoYT"
+  ],
+  "license": "ARR",
+  "icon": "assets/anion/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.peak.anion.core.Anion"
+    ],
+    "client": [
+      "com.peak.anion.core.AnionClient"
+    ],
+    "fabric-datagen": [
+      "com.peak.anion.datagen.AnionDataGen"
+    ]
+  },
+  "mixins": [
+    "anion.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
