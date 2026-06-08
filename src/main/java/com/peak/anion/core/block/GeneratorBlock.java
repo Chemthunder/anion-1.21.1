@@ -2,11 +2,15 @@ package com.peak.anion.core.block;
 
 import com.mojang.serialization.MapCodec;
 import com.peak.anion.core.block.entity.GeneratorBlockEntity;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -17,12 +21,19 @@ import org.jetbrains.annotations.Nullable;
 public class GeneratorBlock extends BlockWithEntity {
     private static final MapCodec<GeneratorBlock> CODEC = createCodec(GeneratorBlock::new);
 
-    public GeneratorBlock(Settings settings) {
-        super(settings);
-    }
+    public static final BooleanProperty POWERED = Properties.POWERED;
 
     public MapCodec<? extends BlockWithEntity> getCodec() {
         return CODEC;
+    }
+
+    public GeneratorBlock(Settings settings) {
+        super(settings);
+        this.setDefaultState(this.getDefaultState().with(POWERED, true));
+    }
+
+    public void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(POWERED);
     }
 
     @Nullable

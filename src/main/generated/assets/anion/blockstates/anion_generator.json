@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "anion:block/anion_generator"
+    },
+    "powered=true": {
+      "model": "anion:block/anion_generator_powered"
+    }
+  }
+}
