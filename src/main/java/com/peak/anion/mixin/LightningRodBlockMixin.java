@@ -37,7 +37,7 @@ public abstract class LightningRodBlockMixin {
 
             for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class, new Box(blockPos).expand(15), EntityPredicates.EXCEPT_SPECTATOR)) {
                 if (player instanceof ScreenShaker shaker) {
-                    shaker.addScreenShake(1.3F, 40);
+                    shaker.addScreenShake(1.3F, 15);
                 }
             }
         }

@@ -1,12 +1,13 @@
 package com.peak.anion.datagen.provider.resources;
 
+import com.peak.anion.core.block.GeneratorBlock;
 import com.peak.anion.core.index.AnionBlocks;
+import com.peak.anion.core.index.AnionItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
-import net.minecraft.state.property.Properties;
 import net.minecraft.util.Identifier;
 
 /**
@@ -23,7 +24,7 @@ public class AnionModelProvider extends FabricModelProvider {
     }
 
     public void generateItemModels(ItemModelGenerator generator) {
-        //
+        generator.register(AnionItems.CHARGED_IRON, Models.GENERATED);
     }
 
     private static void createGeneratorModel(BlockStateModelGenerator generator, Block block) {
@@ -37,7 +38,7 @@ public class AnionModelProvider extends FabricModelProvider {
                 .put(TextureKey.SIDE, blockId.withSuffixedPath("_side")), generator.modelCollector);
 
         generator.blockStateCollector.accept(VariantsBlockStateSupplier.create(AnionBlocks.ANION_GENERATOR)
-                .coordinate(BlockStateVariantMap.create(Properties.POWERED)
+                .coordinate(BlockStateVariantMap.create(GeneratorBlock.POWERED)
                         .register(true, BlockStateVariant.create().put(VariantSettings.MODEL, poweredModel))
                         .register(false, BlockStateVariant.create().put(VariantSettings.MODEL, regularModel))
                 ));
