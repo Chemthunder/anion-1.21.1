@@ -1,4 +1,4 @@
-package com.peak.anion.core.cca;
+package com.peak.anion.cca;
 
 import org.ladysnake.cca.api.v3.entity.EntityComponentFactoryRegistry;
 import org.ladysnake.cca.api.v3.entity.EntityComponentInitializer;

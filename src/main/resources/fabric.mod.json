@@ -19,7 +19,7 @@
             "com.peak.anion.core.AnionClient"
         ],
         "cardinal-components": [
-            "com.peak.anion.core.cca.AnionCCA"
+            "com.peak.anion.cca.AnionCCA"
         ],
         "fabric-datagen": [
             "com.peak.anion.datagen.AnionDatagen"
