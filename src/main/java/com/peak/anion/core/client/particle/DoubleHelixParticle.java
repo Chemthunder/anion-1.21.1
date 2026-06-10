@@ -13,7 +13,16 @@ import net.minecraft.util.math.BlockPos;
  */
 @Environment(EnvType.CLIENT)
 public class DoubleHelixParticle extends SpriteBillboardParticle {
-    public DoubleHelixParticle(ClientWorld clientWorld, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
+    public DoubleHelixParticle(
+        ClientWorld clientWorld,
+        double x,
+        double y,
+        double z,
+        double velocityX,
+        double velocityY,
+        double velocityZ,
+        SpriteProvider spriteProvider
+    ) {
         super(clientWorld, x, y, z, velocityX, velocityY, velocityZ);
         this.velocityX = velocityX;
         this.velocityY = velocityY;

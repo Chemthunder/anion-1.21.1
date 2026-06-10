@@ -27,7 +27,7 @@ public class AnionLangProvider extends FabricLanguageProvider {
 
         builder.add("itemGroup.anion", "Anion");
 
-        builder.add("tooltip.anion.battery", "Charged with %ss");
+        builder.add("tooltip.anion.battery", "Charged with %sS");
 
         builder.add("display.anion.volt_eater.0", "This Volt-eater is storing %s charges.");
         builder.add("display.anion.volt_eater.1", "Interact with a Battery to transfer the electricity.");

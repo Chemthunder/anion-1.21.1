@@ -7,6 +7,6 @@ import net.acoyt.acornlib.api.template.CompatMixinPlugin;
  */
 public class AnionMixinPlugin extends CompatMixinPlugin {
     public AnionMixinPlugin() {
-        super("com.peak.mixin.");
+        super("com.peak.anion.mixin.");
     }
 }

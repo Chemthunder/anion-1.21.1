@@ -24,9 +24,5 @@ public class AnionClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(AnionParticles.DOUBLE_HELIX, DoubleHelixParticle.Factory::new);
 
         HudRenderCallback.EVENT.register(new DisplayHudEvent());
-
-        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> {
-            return 0;
-        });
     }
 }

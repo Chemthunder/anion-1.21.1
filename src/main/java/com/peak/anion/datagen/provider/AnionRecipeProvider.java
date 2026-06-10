@@ -33,22 +33,32 @@ public class AnionRecipeProvider extends FabricRecipeProvider {
                 .criterion("has_charged_iron_ingot", conditionsFromItem(AnionItems.CHARGED_IRON_INGOT))
                 .offerTo(exporter);
 
-//        ShapedRecipeJsonBuilder.create(
-//                        RecipeCategory.REDSTONE,
-//                        AnionBlocks.ATTRACTOR
-//                )
-//                .pattern("csc")
-//                .pattern("shs")
-//                .pattern("lbl")
-//                .input('c', AnionItems.CHARGED_IRON_INGOT)
-//                .input('s', Blocks.SPRUCE_PLANKS)
-//                .input('l', Blocks.SPRUCE_SLAB)
-//                .input('h', Blocks.HOPPER)
-//                .input('b', Items.ENDER_PEARL)
-//                .criterion("unknown", insert)
-//                .offerTo(exporter);
+       ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, AnionBlocks.ATTRACTOR)
+               .pattern("csc")
+               .pattern("shs")
+               .pattern("lbl")
+               .input('c', AnionItems.CHARGED_IRON_INGOT)
+               .input('s', Blocks.SPRUCE_PLANKS)
+               .input('l', Blocks.SPRUCE_SLAB)
+               .input('h', Blocks.HOPPER)
+               .input('b', Items.ENDER_PEARL)
+               .criterion("has_charged_iron_ingot", conditionsFromItem(AnionItems.CHARGED_IRON_INGOT))
+               .offerTo(exporter);
 
-        ///  IN DEV
-        // Replace Insert with a criterion unlocked upon obtaining Charged Iron or sumth
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, AnionItems.BATTERY)
+               .pattern(" /c")
+               .pattern("/c/")
+               .pattern("/  ")
+               .input('/', Items.COPPER)
+               .input('c', AnionItems.CHARGED_IRON_INGOT)
+               .criterion("has_charged_iron_ingot", conditionsFromItem(AnionItems.CHARGED_IRON_INGOT))
+               .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, AnionBlocks.CHARGED_IRON_BLOCK)
+               .pattern("cc")
+               .pattern("cc")
+               .input('c', AnionItems.CHARGED_IRON_INGOT)
+               .criterion("has_charged_iron_ingot", conditionsFromItem(AnionItems.CHARGED_IRON_INGOT))
+               .offerTo(exporter);
     }
 }
