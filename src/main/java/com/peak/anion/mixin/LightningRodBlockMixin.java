@@ -1,6 +1,7 @@
 package com.peak.anion.mixin;
 
 import com.nitron.nitrogen.util.interfaces.ScreenShaker;
+import com.peak.anion.core.block.VolteaterBlock;
 import com.peak.anion.core.index.AnionBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -40,6 +41,24 @@ public abstract class LightningRodBlockMixin {
                     shaker.addScreenShake(1.3F, 15);
                 }
             }
+        }
+
+        if (world.getBlockState(blockPos).isOf(AnionBlocks.VOLTEATER)) {
+            VolteaterBlock.charge(world, blockPos, world.getBlockState(blockPos));
+
+            world.playSound(
+                    null,
+                    blockPos,
+                    SoundEvents.ITEM_TRIDENT_THUNDER.value(), SoundCategory.BLOCKS,
+                    1.0F, 0.4F
+            );
+
+            world.playSound(
+                    null,
+                    blockPos,
+                    SoundEvents.ENTITY_WITHER_HURT, SoundCategory.BLOCKS,
+                    0.7F, 0.2F
+            );
         }
     }
 }

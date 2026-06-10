@@ -19,5 +19,16 @@ public class AnionLangProvider extends FabricLanguageProvider {
     public void generateTranslations(RegistryWrapper.WrapperLookup registries, TranslationBuilder builder) {
         AnionBlocks.BLOCKS.registerLang(registries, builder);
         AnionItems.ITEMS.registerLang(registries, builder);
+
+        builder.add("itemGroup.anion", "Anion");
+
+        builder.add("tooltip.anion.battery", "Charged with %sS");
+
+        builder.add("display.anion.volteater.0", "This Volteater is storing %s charges.");
+        builder.add("display.anion.volteater.1", "Interact with a Battery to transfer the electricity.");
+
+        builder.add("display.anion.attractor.0", "This Attractor is charged with %s Shockies.");
+        builder.add("display.anion.attractor.1.has_hopper", "This Attractor will pick up nearby dropped items and deposit them in the Hopper below.");
+        builder.add("display.anion.attractor.1.no_hopper", "Place a Hopper below this Attractor for it to begin attracting dropped items.");
     }
 }

@@ -1,5 +1,6 @@
 package com.peak.anion.datagen.provider.resources;
 
+import com.peak.anion.core.Anion;
 import com.peak.anion.core.block.GeneratorBlock;
 import com.peak.anion.core.index.AnionBlocks;
 import com.peak.anion.core.index.AnionItems;
@@ -10,10 +11,15 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.util.Identifier;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author AcoYT
  */
 public class AnionModelProvider extends FabricModelProvider {
+    public static final List<Identifier> BATTERY_MODELS = new ArrayList<>();
+
     public AnionModelProvider(FabricDataOutput output) {
         super(output);
     }
@@ -25,6 +31,11 @@ public class AnionModelProvider extends FabricModelProvider {
 
     public void generateItemModels(ItemModelGenerator generator) {
         generator.register(AnionItems.CHARGED_IRON, Models.GENERATED);
+
+        for (int i = 0; i < 9; i++) {
+            generator.register(AnionItems.BATTERY, "_" + i, Models.GENERATED);
+            BATTERY_MODELS.add(Anion.id("battery_" + i));
+        }
     }
 
     private static void createGeneratorModel(BlockStateModelGenerator generator, Block block) {

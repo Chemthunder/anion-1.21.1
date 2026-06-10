@@ -2,8 +2,10 @@ package com.peak.anion.core.index;
 
 import com.mojang.serialization.MapCodec;
 import com.peak.anion.core.Anion;
+import com.peak.anion.core.block.AttractorBlock;
 import com.peak.anion.core.block.ChargedIronBlock;
 import com.peak.anion.core.block.GeneratorBlock;
+import com.peak.anion.core.block.VolteaterBlock;
 import net.acoyt.acornlib.api.registrants.BlockRegistrant;
 import net.acoyt.acornlib.impl.item.TranslationBlockItem;
 import net.acoyt.acornlib.impl.util.Util;
@@ -28,6 +30,13 @@ public interface AnionBlocks {
 
     Block ANION_GENERATOR = registerWithItem("anion_generator", GeneratorBlock::new, AbstractBlock.Settings.copy(Blocks.DEEPSLATE)
             .sounds(BlockSoundGroup.WOOD), GeneratorBlock.CODEC);
+
+    Block VOLTEATER = registerWithItem("volteater", VolteaterBlock::new, AbstractBlock.Settings.copy(Blocks.COPPER_BLOCK)
+            .sounds(AnionBlockSoundGroups.ELECTRICAL), VolteaterBlock.CODEC);
+
+    Block ATTRACTOR = registerWithItem("attractor", AttractorBlock::new, AbstractBlock.Settings.copy(Blocks.COPPER_BLOCK)
+            .ticksRandomly()
+            .sounds(AnionBlockSoundGroups.ELECTRICAL), AttractorBlock.CODEC);
 
     private static Block registerWithItem(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings,
                                           MapCodec<? extends Block> codec) {
