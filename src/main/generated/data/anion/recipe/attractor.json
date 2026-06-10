@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:ender_pearl"
+    },
+    "C": {
+      "item": "anion:charged_iron_ingot"
+    },
+    "H": {
+      "item": "minecraft:hopper"
+    },
+    "L": {
+      "item": "minecraft:spruce_slab"
+    },
+    "S": {
+      "item": "minecraft:spruce_planks"
+    }
+  },
+  "pattern": [
+    "CSC",
+    "SHS",
+    "LBL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "anion:attractor"
+  }
+}

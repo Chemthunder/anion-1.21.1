@@ -24,41 +24,37 @@ public class AnionRecipeProvider extends FabricRecipeProvider {
     public void generate(RecipeExporter exporter) {
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, AnionBlocks.ANION_GENERATOR)
                 .pattern("DID")
+                .pattern("S#S")
                 .pattern("SCS")
-                .pattern("S S")
                 .input('D', Blocks.POLISHED_DEEPSLATE)
                 .input('I', Items.IRON_INGOT)
                 .input('S', Blocks.SPRUCE_PLANKS)
-                .input('C', AnionItems.CHARGED_IRON_INGOT)
+                .input('#', AnionItems.CHARGED_IRON_INGOT)
+                .input('C', Items.COPPER_BLOCK)
                 .criterion("has_charged_iron_ingot", conditionsFromItem(AnionItems.CHARGED_IRON_INGOT))
                 .offerTo(exporter);
 
-       ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, AnionBlocks.ATTRACTOR)
-               .pattern("csc")
-               .pattern("shs")
-               .pattern("lbl")
-               .input('c', AnionItems.CHARGED_IRON_INGOT)
-               .input('s', Blocks.SPRUCE_PLANKS)
-               .input('l', Blocks.SPRUCE_SLAB)
-               .input('h', Blocks.HOPPER)
-               .input('b', Items.ENDER_PEARL)
-               .criterion("has_charged_iron_ingot", conditionsFromItem(AnionItems.CHARGED_IRON_INGOT))
-               .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, AnionBlocks.ATTRACTOR)
+                .pattern("CSC")
+                .pattern("SHS")
+                .pattern("LBL")
+                .input('C', AnionItems.CHARGED_IRON_INGOT)
+                .input('S', Blocks.SPRUCE_PLANKS)
+                .input('L', Blocks.SPRUCE_SLAB)
+                .input('H', Blocks.HOPPER)
+                .input('B', Items.ENDER_PEARL)
+                .criterion("has_charged_iron_ingot", conditionsFromItem(AnionItems.CHARGED_IRON_INGOT))
+                .offerTo(exporter);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, AnionItems.BATTERY)
-               .pattern(" /c")
-               .pattern("/c/")
-               .pattern("/  ")
-               .input('/', Items.COPPER)
-               .input('c', AnionItems.CHARGED_IRON_INGOT)
-               .criterion("has_charged_iron_ingot", conditionsFromItem(AnionItems.CHARGED_IRON_INGOT))
-               .offerTo(exporter);
+                .pattern(" /c")
+                .pattern("/c/")
+                .pattern("// ")
+                .input('/', Items.COPPER_INGOT)
+                .input('c', AnionItems.CHARGED_IRON_INGOT)
+                .criterion("has_charged_iron_ingot", conditionsFromItem(AnionItems.CHARGED_IRON_INGOT))
+                .offerTo(exporter);
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, AnionBlocks.CHARGED_IRON_BLOCK)
-               .pattern("cc")
-               .pattern("cc")
-               .input('c', AnionItems.CHARGED_IRON_INGOT)
-               .criterion("has_charged_iron_ingot", conditionsFromItem(AnionItems.CHARGED_IRON_INGOT))
-               .offerTo(exporter);
+        offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, AnionItems.CHARGED_IRON_INGOT, RecipeCategory.BUILDING_BLOCKS, AnionBlocks.CHARGED_IRON_BLOCK);
     }
 }

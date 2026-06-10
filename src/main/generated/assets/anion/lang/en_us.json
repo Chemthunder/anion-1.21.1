@@ -12,5 +12,5 @@
   "item.anion.charged_iron_ingot": "Charged Iron Ingot",
   "itemGroup.anion": "Anion",
   "tag.item.anion.magnetic": "Magnetic",
-  "tooltip.anion.battery": "Charged with %ss"
+  "tooltip.anion.battery": "Charged with %sS"
 }
