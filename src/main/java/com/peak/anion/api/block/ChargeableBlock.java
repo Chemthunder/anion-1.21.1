@@ -9,8 +9,8 @@ import net.minecraft.world.World;
  * @author Chemthunder
  */
 public interface ChargeableBlock {
-    default void increment(World world, BlockPos pos, BlockState state) {
-        AnionUtil.incrementCharges(world, pos, state);
+    default int increment(World world, BlockPos pos, BlockState state, int charges) {
+        return AnionUtil.incrementCharges(world, pos, state, charges);
     }
 
     default void decrement(World world, BlockPos pos, BlockState state) {
@@ -20,4 +20,6 @@ public interface ChargeableBlock {
     default void set(World world, BlockPos pos, BlockState state, int charges) {
         AnionUtil.setCharges(world, pos, state, charges);
     }
+
+    default void onCharged(World world, BlockPos pos, BlockState state) {}
 }

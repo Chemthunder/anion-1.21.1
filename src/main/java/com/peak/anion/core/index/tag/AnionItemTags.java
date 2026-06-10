@@ -10,7 +10,7 @@ import net.minecraft.registry.tag.TagKey;
  * @author Chemthunder
  */
 public interface AnionItemTags {
-    TagBuilder<Item> TAG_BUILDER = new TagBuilder<>(Anion.MOD_ID, RegistryKeys.ITEM);
+    TagBuilder<Item> ITEMS = new TagBuilder<>(Anion.MOD_ID, RegistryKeys.ITEM);
 
-    TagKey<Item> MAGNETIC = TAG_BUILDER.register("magnetic");
+    TagKey<Item> MAGNETIC = ITEMS.register("magnetic");
 }

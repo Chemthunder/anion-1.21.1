@@ -1,6 +1,5 @@
 package com.peak.anion.datagen.provider.resources;
 
-import com.peak.anion.core.Anion;
 import com.peak.anion.core.block.GeneratorBlock;
 import com.peak.anion.core.index.AnionBlocks;
 import com.peak.anion.core.index.AnionItems;
@@ -11,15 +10,10 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import net.minecraft.util.Identifier;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author AcoYT
  */
 public class AnionModelProvider extends FabricModelProvider {
-    public static final List<Identifier> BATTERY_MODELS = new ArrayList<>();
-
     public AnionModelProvider(FabricDataOutput output) {
         super(output);
     }
@@ -30,11 +24,16 @@ public class AnionModelProvider extends FabricModelProvider {
     }
 
     public void generateItemModels(ItemModelGenerator generator) {
-        generator.register(AnionItems.CHARGED_IRON, Models.GENERATED);
+        generator.register(AnionItems.CHARGED_IRON_INGOT, Models.GENERATED);
 
-        for (int i = 0; i < 9; i++) {
-            generator.register(AnionItems.BATTERY, "_" + i, Models.GENERATED);
-            BATTERY_MODELS.add(Anion.id("battery_" + i));
+        for (int i = 0; i <= 8; i++) {
+            if (i == 0) {
+                generator.register(AnionItems.BATTERY, Models.GENERATED);
+            } else {
+                Identifier itemId = ModelIds.getItemModelId(AnionItems.BATTERY);
+                Identifier modelId = itemId.withSuffixedPath("_" + i);
+                Models.GENERATED_TWO_LAYERS.upload(modelId, TextureMap.layered(itemId, modelId), generator.writer);
+            }
         }
     }
 

@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -19,11 +19,11 @@ public class AnionItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     public void configure(RegistryWrapper.WrapperLookup lookup) {
         this.getOrCreateTagBuilder(AnionItemTags.MAGNETIC)
-                .addOptionalTag(ConventionalItemTags.IRON_INGOTS)
-                .addOptionalTag(ConventionalItemTags.IRON_NUGGETS)
-                .addOptionalTag(ConventionalItemTags.IRON_ORES)
-                .addOptionalTag(ConventionalItemTags.IRON_RAW_MATERIALS)
-                .addOptionalTag(BlockTags.IRON_ORES.id())
+                .forceAddTag(ConventionalItemTags.IRON_INGOTS)
+                .forceAddTag(ConventionalItemTags.IRON_NUGGETS)
+                .forceAddTag(ConventionalItemTags.IRON_ORES)
+                .forceAddTag(ConventionalItemTags.IRON_RAW_MATERIALS)
+                .forceAddTag(ItemTags.IRON_ORES)
                 .setReplace(false);
     }
 }

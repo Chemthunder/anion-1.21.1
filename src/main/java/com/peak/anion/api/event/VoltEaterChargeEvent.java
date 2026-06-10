@@ -14,11 +14,11 @@ import java.util.List;
 /**
  * @author Chemthunder
  */
-public interface VolteaterChargeCallback {
-    Event<VolteaterChargeCallback> EVENT = EventFactory.createArrayBacked(VolteaterChargeCallback.class, events -> (world, pos, state) -> {
-        List<VolteaterChargeCallback> sortedEvents = new ArrayList<>(Arrays.asList(events));
-        sortedEvents.sort(Comparator.comparingInt(VolteaterChargeCallback::getPriority));
-        for (VolteaterChargeCallback event : sortedEvents) {
+public interface VoltEaterChargeEvent {
+    Event<VoltEaterChargeEvent> EVENT = EventFactory.createArrayBacked(VoltEaterChargeEvent.class, events -> (world, pos, state) -> {
+        List<VoltEaterChargeEvent> sortedEvents = new ArrayList<>(Arrays.asList(events));
+        sortedEvents.sort(Comparator.comparingInt(VoltEaterChargeEvent::getPriority));
+        for (VoltEaterChargeEvent event : sortedEvents) {
             event.onCharge(world, pos, state);
         }
     });

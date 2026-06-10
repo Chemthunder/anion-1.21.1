@@ -1,4 +1,4 @@
-package com.peak.anion.core.index;
+package com.peak.anion.core.index.ref;
 
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.sound.SoundEvents;

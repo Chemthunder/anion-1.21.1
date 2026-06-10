@@ -18,10 +18,10 @@ public class Anion implements ModInitializer {
         /* Registration */
         AnionBlockEntities.init();
         AnionBlocks.init();
+        AnionComponents.init();
+        AnionItemGroups.init();
         AnionItems.init();
         AnionParticles.init();
-        AnionComponentTypes.init();
-        AnionItemGroups.init();
 
         LOGGER.info("Charging!!!");
     }

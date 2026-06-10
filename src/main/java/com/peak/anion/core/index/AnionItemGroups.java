@@ -19,7 +19,7 @@ public interface AnionItemGroups {
 
     RegistryKey<ItemGroup> GROUP_KEY = RegistryKey.of(RegistryKeys.ITEM_GROUP, Anion.id(Anion.MOD_ID));
     ItemGroup ITEM_GROUP = GROUPS.register(GROUP_KEY.getValue().getPath(), FabricItemGroup.builder()
-            .icon(() -> new ItemStack(AnionItems.CHARGED_IRON))
+            .icon(() -> new ItemStack(AnionItems.CHARGED_IRON_INGOT))
             .displayName(Text.translatable("itemGroup." + Anion.MOD_ID).withColor(0xFF545158)) // 0xFF611437
             .build());
 
@@ -31,13 +31,13 @@ public interface AnionItemGroups {
         ItemGroup.DisplayContext context = itemGroup.getContext();
 
         // Anion
-        itemGroup.add(AnionItems.CHARGED_IRON);
+        itemGroup.add(AnionItems.CHARGED_IRON_INGOT);
         itemGroup.add(AnionBlocks.CHARGED_IRON_BLOCK);
         itemGroup.add(AnionBlocks.ANION_GENERATOR);
 
         // Electric
         itemGroup.add(AnionItems.BATTERY);
-        itemGroup.add(AnionBlocks.VOLTEATER);
+        itemGroup.add(AnionBlocks.VOLT_EATER);
         itemGroup.add(AnionBlocks.ATTRACTOR);
     }
 }

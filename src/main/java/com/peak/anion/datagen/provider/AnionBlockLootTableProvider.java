@@ -18,7 +18,7 @@ public class AnionBlockLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
         this.addDrop(AnionBlocks.CHARGED_IRON_BLOCK);
         this.addDrop(AnionBlocks.ANION_GENERATOR);
-        this.addDrop(AnionBlocks.VOLTEATER);
+        this.addDrop(AnionBlocks.VOLT_EATER);
         this.addDrop(AnionBlocks.ATTRACTOR);
     }
 }

@@ -9,7 +9,7 @@ import net.minecraft.network.codec.PacketCodecs;
 /**
  * @author Chemthunder
  */
-public interface AnionComponentTypes {
+public interface AnionComponents {
     ComponentTypeRegistrant COMPONENTS = new ComponentTypeRegistrant(Anion.MOD_ID);
 
     ComponentType<Integer> STORED_CHARGES = COMPONENTS.register("stored_charges", Codec.INT, PacketCodecs.INTEGER);

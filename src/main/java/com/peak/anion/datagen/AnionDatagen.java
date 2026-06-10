@@ -13,15 +13,18 @@ public class AnionDatagen implements DataGeneratorEntrypoint {
     public void onInitializeDataGenerator(FabricDataGenerator generator) {
         FabricDataGenerator.Pack pack = generator.createPack();
 
+        // Lang
         pack.addProvider(AnionLangProvider::new);
 
+        // Resources
         pack.addProvider(AnionModelProvider::new);
         pack.addProvider(AnionParticleProvider::new);
 
-        pack.addProvider(AnionBlockLootTableProvider::new);
-
+        // Tags
         pack.addProvider(AnionItemTagProvider::new);
 
+        // Other Data
+        pack.addProvider(AnionBlockLootTableProvider::new);
         pack.addProvider(AnionRecipeProvider::new);
     }
 }

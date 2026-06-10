@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "anion:item/battery_0"
+    "layer0": "anion:item/battery"
   }
 }

@@ -2,14 +2,15 @@
   "block.anion.anion_generator": "Anion Generator",
   "block.anion.attractor": "Attractor",
   "block.anion.charged_iron_block": "Charged Iron Block",
-  "block.anion.volteater": "Volteater",
+  "block.anion.volt_eater": "Volt-eater",
   "display.anion.attractor.0": "This Attractor is charged with %s Shockies.",
   "display.anion.attractor.1.has_hopper": "This Attractor will pick up nearby dropped items and deposit them in the Hopper below.",
   "display.anion.attractor.1.no_hopper": "Place a Hopper below this Attractor for it to begin attracting dropped items.",
-  "display.anion.volteater.0": "This Volteater is storing %s charges.",
-  "display.anion.volteater.1": "Interact with a Battery to transfer the electricity.",
+  "display.anion.volt_eater.0": "This Volt-eater is storing %s charges.",
+  "display.anion.volt_eater.1": "Interact with a Battery to transfer the electricity.",
   "item.anion.battery": "Battery",
   "item.anion.charged_iron_ingot": "Charged Iron Ingot",
   "itemGroup.anion": "Anion",
-  "tooltip.anion.battery": "Charged with %sS"
+  "tag.item.anion.magnetic": "Magnetic",
+  "tooltip.anion.battery": "Charged with %ss"
 }

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "anion:charged_iron_ingot"
+    },
+    "D": {
+      "item": "minecraft:polished_deepslate"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:spruce_planks"
+    }
+  },
+  "pattern": [
+    "DID",
+    "SCS",
+    "S S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "anion:anion_generator"
+  }
+}

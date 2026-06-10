@@ -11,13 +11,12 @@ import net.minecraft.item.Item;
 public interface AnionItems {
     ItemRegistrant ITEMS = new ItemRegistrant(Anion.MOD_ID);
 
-    Item CHARGED_IRON = ITEMS.register("charged_iron_ingot", Item::new, new Item.Settings());
+    Item CHARGED_IRON_INGOT = ITEMS.register("charged_iron_ingot", Item::new, new Item.Settings());
 
     Item BATTERY = ITEMS.register("battery", BatteryItem::new, new Item.Settings()
+            .component(AnionComponents.STORED_CHARGES, BatteryItem.MAX_CHARGES)
             .maxCount(1)
-            .component(AnionComponentTypes.STORED_CHARGES, 0)
-            .fireproof()
-    );
+            .fireproof());
 
     static void init() {}
 }
