@@ -13,6 +13,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 
 /**
+ * @author AcoYT
  * @author Chemthunder
  */
 @Environment(EnvType.CLIENT)

@@ -10,6 +10,7 @@ import net.minecraft.registry.tag.ItemTags;
 import java.util.concurrent.CompletableFuture;
 
 /**
+ * @author AcoYT
  * @author Chemthunder
  */
 public class AnionItemTagProvider extends FabricTagProvider.ItemTagProvider {

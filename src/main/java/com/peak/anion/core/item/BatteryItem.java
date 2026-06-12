@@ -26,6 +26,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * @author AcoYT
  * @author Chemthunder
  */
 public class BatteryItem extends Item implements ModelVaryingItem {

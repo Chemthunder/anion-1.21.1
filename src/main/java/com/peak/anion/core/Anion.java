@@ -7,8 +7,8 @@ import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 
 /**
- * @author Chemthunder
  * @author AcoYT
+ * @author Chemthunder
  */
 public class Anion implements ModInitializer {
     public static final String MOD_ID = "anion";

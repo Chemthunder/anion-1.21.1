@@ -16,24 +16,6 @@ public class GeneratorBlockEntityRenderer implements BlockEntityRenderer<Generat
     }
 
     public void render(GeneratorBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
-//        if (entity.getWorld() != null) {
-//            BlockPos pos = entity.getPos();
-//            Vec3d cameraPos = MinecraftClient.getInstance().gameRenderer.getCamera().getPos();
-//            Box box = AnionUtil.getUpwardsOfWater(entity.getWorld(), pos, cameraPos);
-//
-//            matrices.push();
-//
-//            //matrices.translate(cameraPos.x, cameraPos.y, cameraPos.z);
-//            matrices.scale(-1, -1, -1);
-//
-//            DebugRenderer.drawBox(
-//                    matrices,
-//                    vertexConsumers,
-//                    box,
-//                    1.0F, 1.0F, 0.0F, 0.35F
-//            );
-//
-//            matrices.pop();
-//        }
+        //
     }
 }

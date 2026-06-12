@@ -9,6 +9,10 @@ import com.peak.anion.datagen.provider.tag.AnionItemTagProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
+/**
+ * @author AcoYT
+ * @author Chemthunder
+ */
 public class AnionDatagen implements DataGeneratorEntrypoint {
     public void onInitializeDataGenerator(FabricDataGenerator generator) {
         FabricDataGenerator.Pack pack = generator.createPack();

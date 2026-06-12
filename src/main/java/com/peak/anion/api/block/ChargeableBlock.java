@@ -6,6 +6,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 /**
+ * @author AcoYT
  * @author Chemthunder
  */
 public interface ChargeableBlock {

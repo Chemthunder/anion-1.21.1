@@ -27,6 +27,7 @@ import java.util.List;
 import static com.peak.anion.core.util.AnionUtil.SHOCKIES;
 
 /**
+ * @author AcoYT
  * @author Chemthunder
  */
 public class AttractorBlock extends BlockWithEntity implements ChargeableBlock, InformationalBlock {
@@ -48,20 +49,10 @@ public class AttractorBlock extends BlockWithEntity implements ChargeableBlock, 
     }
 
     public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
-        BlockPos downPos = pos.down();
+        boolean bl = world.getBlockEntity(pos.down()) instanceof HopperBlockEntity;
 
-        if (world.getBlockEntity(downPos) instanceof HopperBlockEntity) {
-            world.setBlockState(
-                    pos,
-                    state.with(HAS_HOPPER_BELOW, true),
-                    Block.NOTIFY_LISTENERS
-            );
-        } else {
-            world.setBlockState(
-                    pos,
-                    state.with(HAS_HOPPER_BELOW, false),
-                    Block.NOTIFY_LISTENERS
-            );
+        if (bl != state.get(HAS_HOPPER_BELOW)) {
+            world.setBlockState(pos, state.with(HAS_HOPPER_BELOW, bl), Block.NOTIFY_LISTENERS);
         }
 
         super.neighborUpdate(state, world, pos, sourceBlock, sourcePos, notify);
@@ -69,22 +60,12 @@ public class AttractorBlock extends BlockWithEntity implements ChargeableBlock, 
 
     @Nullable
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        BlockPos pos = ctx.getBlockPos();
-        World world = ctx.getWorld();
-
-        if (world.getBlockEntity(pos.down()) instanceof HopperBlockEntity) {
-            return this.getDefaultState().with(HAS_HOPPER_BELOW, true);
-        }
-
-        return super.getPlacementState(ctx);
+        return this.getDefaultState().with(HAS_HOPPER_BELOW, ctx.getWorld().getBlockEntity(ctx.getBlockPos().down()) instanceof HopperBlockEntity);
     }
 
-    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+    @Nullable
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new AttractorBlockEntity(pos, state);
-    }
-
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
     }
 
     @Nullable
@@ -94,6 +75,10 @@ public class AttractorBlock extends BlockWithEntity implements ChargeableBlock, 
                 attractorBlock.tick(world, pos, state);
             }
         };
+    }
+
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
     }
 
     public List<Text> getInfoDisplayTexts(BlockState state, PlayerEntity viewer) {

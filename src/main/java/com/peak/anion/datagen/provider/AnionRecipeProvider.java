@@ -14,6 +14,7 @@ import net.minecraft.registry.RegistryWrapper;
 import java.util.concurrent.CompletableFuture;
 
 /**
+ * @author AcoYT
  * @author Chemthunder
  */
 public class AnionRecipeProvider extends FabricRecipeProvider {
