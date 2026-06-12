@@ -1,6 +1,5 @@
 package com.peak.anion.core.item;
 
-import com.peak.anion.api.block.ChargeableBlock;
 import com.peak.anion.core.Anion;
 import com.peak.anion.core.block.VoltEaterBlock;
 import com.peak.anion.core.index.AnionComponents;
@@ -45,39 +44,24 @@ public class BatteryItem extends Item implements ModelVaryingItem {
             BlockState state = world.getBlockState(context.getBlockPos());
             BlockPos pos = context.getBlockPos();
             int stackCharges = stack.getOrDefault(AnionComponents.STORED_CHARGES, 0);
+            if (state.contains(VoltEaterBlock.CHARGES)) {
+                int charges = state.get(VoltEaterBlock.CHARGES);
+                int sum = stackCharges + charges; // 4 + 6 = 10
+                int clamped = MathHelper.clamp(sum, 0, MAX_CHARGES); // 8
 
-            if (stackCharges > 0) {
-                if (state.contains(VoltEaterBlock.CHARGES)) {
-                    int charges = state.get(VoltEaterBlock.CHARGES);
+                stack.set(AnionComponents.STORED_CHARGES, clamped); // 8
+                world.setBlockState(pos, state.with(VoltEaterBlock.CHARGES, sum - clamped)); // 10 - 8
 
-                    if (charges + stackCharges > MAX_CHARGES) {
-                        stack.set(AnionComponents.STORED_CHARGES, (charges + stackCharges) - MAX_CHARGES); // only fill block to max
-                        world.setBlockState(pos, state.with(VoltEaterBlock.CHARGES, MAX_CHARGES));
-                    } else {
-                        stack.set(AnionComponents.STORED_CHARGES, 0);
-                        world.setBlockState(pos, state.with(VoltEaterBlock.CHARGES, stackCharges));
-                    }
+                return world.isClient ? ActionResult.CONSUME : ActionResult.SUCCESS;
+            } else if (state.contains(AnionUtil.SHOCKIES) && stackCharges > 0) {
+                int shockies = state.get(AnionUtil.SHOCKIES);
+                int sum = stackCharges + shockies;
+                int clamped = MathHelper.clamp(sum, 0, MAX_CHARGES);
 
-                    return world.isClient ? ActionResult.CONSUME : ActionResult.SUCCESS;
-                } else if (state.contains(AnionUtil.SHOCKIES)) {
-                    int charges = state.get(AnionUtil.SHOCKIES);
+                stack.set(AnionComponents.STORED_CHARGES, sum - clamped);
+                world.setBlockState(pos, state.with(AnionUtil.SHOCKIES, clamped));
 
-                    if (charges + stackCharges > MAX_CHARGES) {
-                        stack.set(AnionComponents.STORED_CHARGES, (charges + stackCharges) - MAX_CHARGES); // only fill block to max
-                        world.setBlockState(pos, state.with(VoltEaterBlock.CHARGES, MAX_CHARGES));
-                    } else {
-                        stack.set(AnionComponents.STORED_CHARGES, 0);
-                        world.setBlockState(pos, state.with(VoltEaterBlock.CHARGES, stackCharges));
-                    }
-
-                    return world.isClient ? ActionResult.CONSUME : ActionResult.SUCCESS;
-                } else if (world.getBlockState(pos).getBlock() instanceof ChargeableBlock chargeable) {
-                    stack.set(AnionComponents.STORED_CHARGES, stackCharges - chargeable.increment(world, pos, state, stackCharges));
-                    Anion.LOGGER.info("Prev: {}, New: {}", stackCharges, stack.get(AnionComponents.STORED_CHARGES));
-
-                    player.swingHand(context.getHand(), !world.isClient);
-                    return world.isClient ? ActionResult.CONSUME : ActionResult.SUCCESS;
-                }
+                return world.isClient ? ActionResult.CONSUME : ActionResult.SUCCESS;
             }
         }
 
